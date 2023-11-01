@@ -1,0 +1,103 @@
+\section{Sheet}
+\subsection{Introduction}
+\subsubsection{Minimum Value of $P\left(A\cap B\right)$}
+\begin{align}
+    &P\left(A\cup B\right)=P\left(A\right)+P\left(B\right)-P\left(A\cap B\right)
+    \\\Leftrightarrow &P\left(A\cap B\right)=P\left(A\right)+P\left(B\right)-P\left(A\cup B\right)
+\end{align}
+To minimize $P\left(A\cup B\right)$ maximize $P\left(A\cup B\right)$!
+Since $P\left(A\right)+P\left(B\right)\geq1$ we can assume that ${A\cup B = \Omega}$ in effort to maximize
+$P\left(A\cup B\right)$. Therefore set $P\left(A\cup B\right) = 1$. Now
+\begin{equation}
+    \min_{A,B}P\left(A\cap B\right)=P\left(A\right)+P\left(B\right)-P\left(A\cup B\right)=\frac{1}{21}
+\end{equation}
+\subsubsection{A and B independent}
+For $A$ and $B$ independent
+\begin{equation}
+    P\left(A\cap B\right)=P\left(A\right)P\left(B\right)=\frac{5}{21}
+\end{equation}
+\subsubsection{C:= None of the Events occour}
+The Negations of Events are independent for independent Events. So,
+\begin{equation}
+    P\left(A'\cap B'\right)=P\left(A'\right)P\left(B'\right)=\frac{2}{3}\frac{2}{7}=\frac{4}{21}
+\end{equation}
+\subsubsection{D:= Exactly one of the two events occours}
+Lets define $AB:=A\cap B$.
+\begin{align}
+    P\left(A'B\cup AB'\right)&=P\left(A'B\right)+P\left(AB'\right)-P\left(\underbrace{A'B\cap AB'}_{=\emptyset}\right)\label{disjointIntersection}
+    \\&=P\left(A'B\right)+P\left(AB'\right)
+    \\&=P\left(A'\right)P\left(B\right)+P\left(A\right)P\left(B'\right)
+    \\&=\frac{2}{3}\frac{5}{7}+\frac{1}{3}\frac{2}{7}=\frac{4}{7}
+\end{align}
+\subsubsection{E:= Both Events occour}
+For $A$ and $B$ independent
+\begin{equation}
+    P\left(A\cap B\right)=P\left(A\right)P\left(B\right)=\frac{1}{3}\frac{5}{7}=\frac{5}{21}
+\end{equation}
+\paragraph{Sanity Check}
+Since the already calculated Events $C:=\textbf{No Event occuring}$, $D:=\textbf{One Event occuring}$ and $E:=\textbf{Both events occuring}$ span $\Omega$, we can check that
+\begin{equation}
+    P\left(C\right)+P\left(D\right)+P\left(E\right)=\frac{4}{21}+\frac{4}{7}+\frac{5}{21}\overset{!}{=}1
+\end{equation}
+and indeed it is.
+\subsubsection{F:= At least one of the two Events occours}
+\paragraph{Fast Route}
+Since $F=D\dot\cup E$
+\begin{equation}
+    P\left(F\right)=P\left(D\right)+P\left(E\right)=\frac{17}{21}
+\end{equation}
+\paragraph{Long, but instructive Route}
+Again, using $AB:=A\cap B$,
+\begin{align}
+    P\left(D\cup E\right)&=P\left(A'B\cup AB'\cup AB\right)
+    \\&=P\left(A'B\right)+P\left(AB'\cup AB\right)-P\left(\underbrace{A'B\cap\left(AB'\cup AB\right)}_{=\emptyset}\right)\label{disjointIntersection2}
+    \\&=P\left(A'B\right)+P\left(AB'\right)+P\left(AB\right)-P\left(\underbrace{AB'\cap AB}_{=\emptyset}\right)\label{disjointIntersection3}
+    \\&=P\left(A'\right)P\left(B\right)+P\left(A\right)P\left(B'\right)+P\left(A\right)P\left(B\right)
+    \\&=\frac{2}{3}\frac{5}{7}+\frac{1}{3}\frac{2}{7}+\frac{1}{3}\frac{5}{7}
+    \\&=\frac{17}{21}
+\end{align}
+\subsubsection{G:= At most one of the two Events occours}
+\paragraph{Fast Route}
+Since $G:=C\dot\cup D$
+\begin{equation}
+    P\left(G\right)=P\left(C\right)+P\left(D\right)=\frac{16}{21}
+\end{equation}
+\paragraph{Long (shortened), but instructive Route}
+Using the same empty Intsection argument as in \ref{disjointIntersection}, \ref{disjointIntersection2} and \ref{disjointIntersection3}
+\begin{align}
+    P\left(A'B'\cup A'B\cup AB'\right)&=P\left(A'B'\right)+P\left(A'B\right)+P\left(AB'\right)
+    \\&=\frac{2}{3}\frac{2}{7}+\frac{2}{3}\frac{5}{7}+\frac{1}{3}\frac{2}{7}=\frac{16}{21}
+\end{align}
+\subsection{Novel Detector Failure}
+There are two remoTES, each fully functional ($c$) with a probability
+\begin{equation}
+    P\left(c\right) = P\left(p_1\right)P\left(w\right)P\left(p_2\right) = 0.405
+\end{equation},
+since the sucess events of three components ($p_1$, $w$ and $p_2$) are independent.
+Each one will fail with a probability
+\begin{equation}
+    P\left(\overline{c}\right)=1-0.405=0.595
+\end{equation}
+The probability for both to fail is
+\begin{equation}
+    P\left(\overline{c_1}\cap \overline{c_2}\right) = P^2\left(\overline{c}\right)=0.354025
+\end{equation}
+Which means at least one will function with probability
+\begin{equation}
+    P\left(c_1\cup c_2\right) = 1-0.354025= 0.645975
+\end{equation}
+\subsection{graduation rate}
+\subsubsection{graduation rate}
+With the Events $w:=$ \textbf{is Woman}, $g:=$ \textbf{graduated} the probability of degree completion is
+\begin{align}
+    P\left(g\right)&=P\left(g\vert w\right)P\left(w\right)+P\left(g\vert \overline{w}\right)P\left(\overline{w}\right)
+    \\&= 0.372\cdot 0.625+0.311\cdot \left(1-0.625\right)=0.349125
+\end{align}
+\subsubsection{percentage of male dropouts}
+Since we now know the unconditional dropout rate, we can calculate
+\begin{align}
+    P\left(m\vert \overline{g}\right) &= \frac{P\left(m\cap \overline{g}\right)}{P\left(\overline{g}\right)}
+    \\&=\frac{P\left(\overline{g}\vert m\right)P\left(m\right)}{P\left(\overline{g}\right)}
+    \\&=\frac{\left(1-0.311\right)\left(1-0.625\right)}{1-0.349125}
+    \\&\approx 0.397
+\end{align}

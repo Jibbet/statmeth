@@ -1,0 +1,173 @@
+\documentclass[twoside,12pt,a4paper]{article}
+\usepackage[a4paper,includeheadfoot,left=25mm,right=20mm, top=15mm, bottom=15mm]{geometry}
+
+
+
+%---------------------------- FONT AND TYPESETTING
+\usepackage[british,ngerman]{babel}		%makes latex aware of your language, so better hyphenating etc
+\usepackage[T1]{fontenc} 		%use the T1 for proper searching and use of ligatures etc
+\usepackage[utf8]{inputenc}		%use UTF8 encoding for reading source 
+\usepackage{kpfonts}            % Schiftart hinzufügen
+\usepackage{lmodern}
+
+\usepackage{blindtext}          % Lore Ipsum einbinden
+\usepackage{csquotes}           % Zitatumgebunden 
+
+\usepackage{upgreek}            % Gerade Griechische Buchstaben
+
+%---------------------------- PAGE LAYOUT
+\usepackage[onehalfspacing]{setspace}		  %adjusts linespacing
+\usepackage[font=footnotesize]{caption}   %Kleine Captions
+
+\usepackage{lscape}                        % Querformat im Text ermöglichen
+\usepackage{pdflscape}
+
+\usepackage{float} %more figure placement
+
+%\setlength\parindent{0pt}                 % Größe der Indents / Einrückungen im neunen Absatz
+
+\pagestyle{plain}						  %includes page number in centred in footer
+
+\clubpenalty = 10000                      % Schusterjungen und Huhrenkinder verbieten
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+\usepackage{fancyhdr}                    % Hübsche Header für Seitenzahlen udn Co
+
+\pagestyle{fancy}{                       %Define Fancy Style
+\fancyhf{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+}
+\pagestyle{plain}{}                     % Definiere Plaine Style
+
+\usepackage{afterpage}
+\newcommand\myemptypage{
+    \null
+    \thispagestyle{empty}
+    \newpage
+    }
+
+
+%---------------------------- MATHS
+\usepackage{mathtools} 						%for the rendering of maths
+\usepackage{amsmath}                        % Bessere Mathematikumgebungen
+\usepackage[makeroom]{cancel}               %crossing out terms
+\DeclareMathOperator{\sinc}{sinc}           %Why do i need this :(
+\numberwithin{equation}{section}			%reset numbering within a structural object
+\def\Var{{\textrm{Var}}\,}
+\def\E{{\textrm{E}}\,}
+\usepackage{mathpazo}                       % Mathematik Font
+\usepackage{upgreek}
+\usepackage{faktor}                         %for faktor sets/spaces
+\usepackage{tikz}                           %
+\usetikzlibrary{tikzmark}                   %for overset arrows
+
+%---------------------------- SCIENCE
+\usepackage{units}                          % Setzen von Einheiten
+\usepackage{physics}
+\usepackage{chemfig}
+
+%---------------------------- FIGURES AND TABLES
+\usepackage{caption} 
+\usepackage{subcaption}
+\usepackage{sidecap}
+\usepackage[export]{adjustbox} 
+\usepackage{graphicx}					    %for the rendering of floating graphics
+\usepackage{sidecap}
+\usepackage{color, colortbl}
+
+\usepackage[section]{placeins}				%defines float barriers at the end of sections. Set option [section] for this.
+\usepackage{array} 							%for creating tables
+\usepackage{booktabs}						%professional looking tables, provides /toprule etc
+\usepackage{tabularx}
+\usepackage{pdfpages}
+
+
+
+%---------------------------- BIBLIOGRAPHY
+\usepackage[backend=biber,style=numeric-comp,hyperref, url=false, eprint=false, sorting=none]{biblatex}
+
+\addbibresource{./Bibliographie.bib}	%the absolute or relative path of your bibliography file.
+%\usepackage[nottoc,numbib]{tocbibind}
+
+\usepackage{hyperref, bookmark}			%turns the references and citations into hyperlinks. This needs to be last on the preamble.
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
+
+
+\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+
+\DefineBibliographyStrings{ngerman}{ 
+   andothers = {et\addabbrvspace al\adddot},
+   andmore   = {et\addabbrvspace al\adddot},
+}
+%\renewcommand*{\bibfont}{\small}
+
+%---------------------------- Misc
+\usepackage{xcolor}
+\usepackage{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%	Put the document stuff in here!
+\fontfamily{phv}\selectfont
+
+\pagestyle{empty}
+
+
+\begin{titlepage}
+	\begin{center}
+	\vspace{0.5cm}
+    {\scshape\LARGE Statistische Methoden der Datenanalyse\par}
+	\vspace{2cm}
+	 \rule{16.5cm}{.5pt} \\\vspace{0.5cm}
+	{\Huge\bfseries Excersise Sheets\par}
+	\vspace{0.5cm}
+    \rule{16.5cm}{.5pt} \\
+
+	\vspace{2cm}
+	
+\large  \hfill \\ 	\medskip
+
+
+\bigskip\medskip
+
+
+
+    \vspace{4cm}
+	\vfill
+	
+    {\Large Physik \\
+    	\bigskip
+    \LARGE\scshape	Uni Wien \par}
+    
+    \bigskip
+
+    \vfill
+	{\large \today\par}
+	\end{center}
+\end{titlepage}
+
+
+\fontfamily{ptm}\selectfont
+
+\clearpage
+
+ \myemptypage 
+
+\pagestyle{fancy}
+\clearpage\setcounter{figure}{0}
+\setlength{\tabcolsep}{0pt}
+\makeatletter 
+\let\c@table\c@figure
+\let\c@lstlisting\c@figure
+\renewcommand*\figurename{}
+\renewcommand*\tablename{}
+\newpage
+\input{sheet1}
+\input{sheet2}
+\end{document}

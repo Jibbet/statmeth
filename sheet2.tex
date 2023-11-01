@@ -1,0 +1,71 @@
+\section{Sheet}
+\subsection{Bad Detector}
+It makes sense to assume, that if an event is only registered with
+probability $p$, this can be translated to a reduced rate $\lambda_r = p\lambda$.
+Therefore the Number of registered Events is poisson distributed with density
+\begin{equation}
+    f\left(k;\lambda_r\right)=\frac{\lambda^k}{k!}e^{-\lambda}
+\end{equation}
+{\color{red}yes, but rigorous?}
+\subsection{Uneconomical Warranty for faulty computer monitors}
+\subsubsection{Average faultless running time for economical warranty}
+The percentage of failed monitors after t years is
+\begin{align}
+    p_f&=\int_0^t f_{\text{EX}}\left(t';\tau\right)\;dt'
+    \\&= \int_0^t \frac{1}{\tau}e^{-\frac{t}{\tau}}\;dt'
+    \\&=1-e^{-\frac{t}{\tau}}
+\end{align}
+For $t=5$ and $p_f = 0.2$:
+\begin{align}
+    &0.2\geq 1-e^{-\frac{5}{\tau}}
+    \\\Leftrightarrow&0.8\leq e^{-\frac{5}{\tau}}
+    \\\Leftrightarrow&-\frac{5}{\ln\left(0.8\right)}\leq \tau
+    \\\Leftrightarrow&22.4\leq\tau
+\end{align}
+\subsubsection{Shortened Warranty}
+\begin{equation}
+    \tau\geq - \frac{3}{\ln\left(0.8\right)}=13.44
+\end{equation}
+\subsubsection{Monitors running after 9 years}
+Assuming at least $90\%$ run after 3 years:
+\begin{equation}
+    \tau\geq -\frac{3}{\ln\left(0.9\right)}=28.47
+\end{equation}
+The percentage failed monitors after 5 years is
+\begin{align}
+    p_f&=1-e^{-\frac{t}{\tau}}
+    \\&=0.161
+\end{align}
+After 5 years $0.83\%$ are still running.
+\subsection{Vulcano eruption}
+Let the waiting times to eruption for the $N$ identical vulcanos be realized within
+the random variables $X_1, X_2, \dots, X_N$. Each one distributed exponentially
+\subsubsection{Mean Time to eruption}
+\subsubsection{Time until first eruption}
+For each $X_i$:
+\begin{align}
+    &P\left(X_i\leq t\right)=\int_0^t\frac{1}{\tau}e^{-\frac{t'}{\tau}}\;dt'=1-e^{-\frac{t}{\tau}}
+    \\\Rightarrow&P\left(X_i> t\right)=e^{-\frac{t}{\tau}}
+\end{align}
+The time until the first eruption $Y$ is now distributed as
+\begin{align}
+    P\left(Y\leq t\right)&=P\left(\min\left\{X_1,X_2,\dots,X_N\right\}\leq t\right)
+    \\&=1-P\left(X_1>t, X_2>t,\dots,X_N>t\right)
+    \\&=1-e^{-\frac{nt}{\tau}}
+\end{align}
+$Y$ is  distributed exponentially with mean $\frac{\tau}{n}$.
+\subsubsection{Time until last eruption}
+\subsection{Electric Current}
+The variance of the resistance in linear approximation is given by
+\begin{align}
+    \Var\left[R\left(I\right)\right]&\approx R'\left(\E\left[I\right]\right)^2\vert_{I,U}\cdot\Var\left[I\right]
+    \\&= \left(-\frac{230\text{V}}{2.5\text{A}}\right)^2\cdot\left(0.15\text{A}\right)^2
+    \\&= 190.44 A^2
+    \\\Rightarrow \Delta R = 13.8\Omega
+\end{align}
+The relative error ist then
+\begin{equation}
+    \frac{\Delta R}{R}= \frac{13.8 \text{A}}{\frac{230\text{V}}{2.5\text{A}}}=0.18\Omega
+\end{equation}
+\subsubsection{Different Resistor}
+The Resistor is $R=92\Omega \Rightarrow R'=46\Omega$. Yes? It changes to $0.15\Omega$, assuming the voltage changes and the current stays constant.
