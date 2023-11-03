@@ -56,16 +56,31 @@ The time until the first eruption $Y$ is now distributed as
 $Y$ is  distributed exponentially with mean $\frac{\tau}{n}$.
 \subsubsection{Time until last eruption}
 \subsection{Electric Current}
-The variance of the resistance in linear approximation is given by
+With
+\begin{equation}
+    \dv{R}{I}=-\frac{U}{I^2}
+\end{equation}
+and the Variance of $R$
 \begin{align}
-    \Var\left[R\left(I\right)\right]&\approx R'\left(\E\left[I\right]\right)^2\vert_{I,U}\cdot\Var\left[I\right]
-    \\&= \left(-\frac{230\text{V}}{2.5\text{A}}\right)^2\cdot\left(0.15\text{A}\right)^2
-    \\&= 190.44 A^2
-    \\\Rightarrow \Delta R = 13.8\Omega
+    &\Var\left[R\left(I\right)\right]\approx R'\left(\E\left[I\right]\right)^2\vert_{I,U}\cdot\Var\left[I\right]
+    \\\Rightarrow&\Delta R= \abs{\dv{R}{I}}\Delta I
 \end{align}
+the variance of the resistance in linear approximation is given by
+\begin{equation}
+    \Delta R = \frac{230\text{V}}{2.5^2\text{A}^2}0.15\text{A}=5.52\Omega
+\end{equation}
 The relative error ist then
 \begin{equation}
-    \frac{\Delta R}{R}= \frac{13.8 \text{A}}{\frac{230\text{V}}{2.5\text{A}}}=0.18\Omega
+    \frac{\Delta R}{R}= 0.06
 \end{equation}
 \subsubsection{Different Resistor}
-The Resistor is $R=92\Omega \Rightarrow R'=46\Omega$. Yes? It changes to $0.15\Omega$, assuming the voltage changes and the current stays constant.
+Halving the Resistance means halving the voltage or doubling the current.
+\begin{equation}
+    R' = \frac{1}{2}\frac{U}{I}
+\end{equation}
+Both lead to different outcomes. Assuming the voltage halves:
+\begin{align}
+    &\Delta R = \frac{115\text{V}}{2.5^2\text{A}^2}0.15\text{A}=2.76\Omega
+    \\\Rightarrow &\frac{\Delta R}{R}=0.06
+\end{align}
+, because $U$ is linear in the error, as is the resistance.

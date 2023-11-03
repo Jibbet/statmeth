@@ -1,9 +1,9 @@
-PWD /home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/myex/ex1
+PWD /home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/statmeth
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/myex/ex1/main.tex
+INPUT /home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/statmeth/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls

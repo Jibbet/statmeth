@@ -1,12 +1,12 @@
 # Fdb version 3
-["biber main"] 1698855647 "main.bcf" "main.bbl" "main" 1698857244
-  "main.bcf" 1698857243 105933 8cde7a108b9eb2b38d805656803c7db2 "pdflatex"
+["biber main"] 1699007413 "main.bcf" "main.bbl" "main" 1699008247
+  "main.bcf" 1699008247 105933 8cde7a108b9eb2b38d805656803c7db2 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1698857242 "/home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/myex/ex1/main.tex" "main.pdf" "main" 1698857244
+["pdflatex"] 1699008245 "/home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/statmeth/main.tex" "main.pdf" "main" 1699008247
   "/etc/texmf/web2c/texmf.cnf" 1693564469 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/myex/ex1/main.tex" 1698855496 4894 3c377f95f63d9977c9259e22b35aab0e ""
+  "/home/jakob/Documents/Uni Wien/WS_23_24/Statistical Methods of Data Analysis/statmeth/main.tex" 1698855496 4894 3c377f95f63d9977c9259e22b35aab0e ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/helvetic/phvb8r.tfm" 1136768653 4484 b828043cbd581d289d955903c1339981 ""
@@ -292,12 +292,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1694007059 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1694007097 2799309 7991dc8131f46abf6c927d9f7a907340 ""
-  "main.aux" 1698857243 13915 c7693aa73b280a6a23de4d375c427055 "pdflatex"
-  "main.bbl" 1698855648 466 ee04f40f768daeed26442158e95aba61 "biber main"
-  "main.run.xml" 1698857243 2443 59cc91a97c58388c9b2dea02a9df9977 "pdflatex"
+  "main.aux" 1699008247 13915 188f92d93c0381ec47dc62e60e42321f "pdflatex"
+  "main.bbl" 1699007414 466 ee04f40f768daeed26442158e95aba61 "biber main"
+  "main.run.xml" 1699008247 2443 59cc91a97c58388c9b2dea02a9df9977 "pdflatex"
   "main.tex" 1698855496 4894 3c377f95f63d9977c9259e22b35aab0e ""
   "sheet1.tex" 1698369302 5060 965a8d5112b3146611991d17dcbbf51a ""
-  "sheet2.tex" 1698857242 2983 fb0349366329621192ad5046f1b49934 ""
+  "sheet2.tex" 1699008245 3278 9e31bd3a3a15b0e5c7e7577434672e4e ""
   (generated)
   "main.aux"
   "main.bcf"
