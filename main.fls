@@ -1679,6 +1679,13 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/palatino/pplr8t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
+INPUT ./sheet3.tex
+INPUT ./sheet3.tex
+INPUT ./sheet3.tex
+INPUT sheet3.tex
+INPUT ./sheet3.tex
+INPUT ./sheet3.tex
+INPUT sheet3.tex
 INPUT main.aux
 INPUT main.run.xml
 OUTPUT main.run.xml

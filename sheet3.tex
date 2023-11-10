@@ -1,0 +1,51 @@
+\section{Sheet}
+\subsection*{Inverse Distribution}
+Let $X$ be gamma distributed $\text{Ga}\left(a,b\right),a>2$ and $Y = 1/x$.
+\paragraph{Density of $1/X$}
+The Distribution function of $Y=1/X$ can be written as
+\begin{equation}
+    P\left(\frac{1}{X}\leq x\right)=P\left(\frac{1}{x}\leq X\right)=1-P\left(X<\frac{1}{x}\right)=1-F_{\text{Ga}}\left(\frac{1}{x};a,b\right)
+\end{equation}
+From this the density can be retrieved by derivating with respect to $y$:
+\begin{equation}
+    \pdv{x}\left[1-F_{\text{Ga}}\left(\frac{1}{x};a,b\right)\right]=-\pdv{x}\left[F_{\text{Ga}}\left(\frac{1}{x};a,b\right)\right]=\frac{1}{x^2}f_{\text{Ga}}\left(\frac{1}{x};a,b\right)
+\end{equation}
+Note that no properties of the Gamma distribution have been used and this is a general result.
+\paragraph{expectation value of $1/X$}
+The expectation value is
+\begin{align}
+    E\left[\frac{1}{X}\right]&=\int_{-\infty}^{\infty}\frac{1}{x}f_{\text{Ga}}\left(x;a,b\right)\;dx
+    \\&=\int_0^\infty \frac{1}{x}\frac{x^{a-1}e^{-x/b}}{b^a\Gamma\left(a\right)}\;dx
+    \\&=\int_0^\infty \frac{x^{a-2}e^{-x/b}}{bb^a\left(a-1\right)\Gamma\left(a-1\right)}\;dx
+    \\&=\frac{1}{b\left(a-1\right)}\int_{-\infty}^\infty f_\text{Ga}\left(x;a-1,b\right)\;dx
+    \\&=\frac{1}{b\left(a-1\right)}
+\end{align}
+\paragraph{variance of $1/X$}
+The variance is
+\begin{align}
+    V\left[\frac{1}{X}\right]&=E\left[\frac{1}{X^2}\right]-E\left[\frac{1}{X}\right]^2
+    \\&=\frac{1}{b^2\left(a-2\right)\left(a-1\right)}-\frac{1}{b^2\left(a-1\right)^2}
+    \\&=\frac{\left(a-1\right)}{b^2\left(a-2\right)\left(a-1\right)^2}-\frac{\left(a-2\right)}{b^2\left(a-2\right)\left(a-1\right)^2}
+    \\&=\frac{1}{b^2\left(a-2\right)\left(a-1\right)^2}
+\end{align}
+\paragraph{Linear Error propagation}
+\begin{align}
+    \frac{1}{X}\approx\frac{1}{\mu}-\frac{1}{\mu^2}\left(x-\mu\right)+\frac{1}{\mu^3}\left(x-\mu\right)^2
+\end{align}
+\begin{align}
+    E\left[\frac{1}{X}\right]&\approx \frac{1}{\mu}+\frac{1}{2}\frac{2}{\mu^2}\cdot V\left[X\right]
+    \\&=\frac{1}{ab}+\frac{1}{a^2b^2}\cdot ab^2
+    \\&=\frac{1}{ab}+\frac{1}{a}
+\end{align}
+\subsection{Energy spectrum}
+\subsubsection{convolution}
+\begin{align}
+    f_m&=\frac{1}{10}\left[9f_{No}\left(\mu=5.9,\sigma_0^2\right)+f_{No}\left(\mu = 6.49,\sigma_1^2\right)\right]\star f_{No}\left(\mu = 0, \sigma_F^2\right)
+    \\&=\frac{9}{10}\left[f_{No}\left(\mu=5.9,\sigma_0^2\right)\star f_{No}\left(\mu = 0, \sigma_F^2\right)\right]
+    \\&+\frac{1}{10}\left[f_{No}\left(\mu=6.49,\sigma_1^2\right)\star f_{No}\left(\mu = 0, \sigma_F^2\right)\right]
+    \\&=\frac{9}{10}f_{No}\left(\mu=5.9,\sigma_0^2+\sigma_F^2\right)+\frac{1}{10}f_{No}\left(\mu=6.49,\sigma_1^2+\sigma_F^2\right)
+\end{align}
+\subsubsection{natural uncertainties}
+\begin{align}
+    &\sigma^2 = \tilde{\sigma}^2-\sigma_F^2 = 0.15 \text{keV}^2 \Rightarrow \sigma = 0.39 \text{keV}
+\end{align}
