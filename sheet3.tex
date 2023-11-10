@@ -1,7 +1,13 @@
 \section{Sheet}
 \subsection*{Inverse Distribution}
 Let $X$ be gamma distributed $\text{Ga}\left(a,b\right),a>2$ and $Y = 1/x$.
-\paragraph{Density of $1/X$}
+\subsubsection{Density of $1/X$}
+\paragraph{Short Route}
+Since $Y=h\left(X\right)=1/X\Longrightarrow X=h^{-1}\left(Y\right)=\frac{1}{Y}$
+\begin{equation}
+    f_Y(y)=\frac{1}{X^2}f_X\left(\frac{1}{X}\right)
+\end{equation}
+\paragraph{Long Route}
 The Distribution function of $Y=1/X$ can be written as
 \begin{equation}
     P\left(\frac{1}{X}\leq x\right)=P\left(\frac{1}{x}\leq X\right)=1-P\left(X<\frac{1}{x}\right)=1-F_{\text{Ga}}\left(\frac{1}{x};a,b\right)
@@ -11,7 +17,7 @@ From this the density can be retrieved by derivating with respect to $y$:
     \pdv{x}\left[1-F_{\text{Ga}}\left(\frac{1}{x};a,b\right)\right]=-\pdv{x}\left[F_{\text{Ga}}\left(\frac{1}{x};a,b\right)\right]=\frac{1}{x^2}f_{\text{Ga}}\left(\frac{1}{x};a,b\right)
 \end{equation}
 Note that no properties of the Gamma distribution have been used and this is a general result.
-\paragraph{expectation value of $1/X$}
+\subsubsection{expectation value of $1/X$}
 The expectation value is
 \begin{align}
     E\left[\frac{1}{X}\right]&=\int_{-\infty}^{\infty}\frac{1}{x}f_{\text{Ga}}\left(x;a,b\right)\;dx
@@ -20,7 +26,7 @@ The expectation value is
     \\&=\frac{1}{b\left(a-1\right)}\int_{-\infty}^\infty f_\text{Ga}\left(x;a-1,b\right)\;dx
     \\&=\frac{1}{b\left(a-1\right)}
 \end{align}
-\paragraph{variance of $1/X$}
+\subsubsection{variance of $1/X$}
 The variance is
 \begin{align}
     V\left[\frac{1}{X}\right]&=E\left[\frac{1}{X^2}\right]-E\left[\frac{1}{X}\right]^2
