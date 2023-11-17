@@ -1,0 +1,106 @@
+\section{Sheet}
+\subsection{ML Estimator}
+\subsubsection{Calculating the Estimator}
+The Joint probability density of an exponentially distributed sample is
+\begin{equation}
+    g\left(x_1,\dots,x_m\vert \tau\right) =\prod_{i=1}^{n}\frac{1}{\tau}e^{-\frac{x_i}{\tau}}
+\end{equation}
+The logarithm of this density interpreted as a likelihood function is
+\begin{align}
+    l\left(\tau\right)=\ln g\left(x_1,\dots,x_n\vert \tau\right)&=\sum_{i=1}^n \ln\left(\frac{1}{\tau}e^{-\frac{x_i}{\tau}}\right)
+    \\&=\sum_{i=1}^n -\ln\left(\tau\right)-\frac{1}{\tau}x_i
+\end{align}
+Maximizing the chance to draw this particular sample:
+\begin{align}
+    &\pdv{l}{\tau}=\sum_{i=1}^n -\frac{1}{\tau}+\frac{1}{\tau^2}x_i \overset{!}{=} 0
+    \\\Leftrightarrow&-n +\sum_{i=1}^n\frac{1}{\tau}x_i = 0 
+    \\\Leftrightarrow&\hat{\tau} = \frac{1}{n}\sum^n_{i=1}x_i
+\end{align}
+Inserting $s=\sum x_i = 395.25$ and $n=250$ yields
+\begin{equation}
+    \hat{\tau} = 1.581
+\end{equation}
+\subsubsection{Showing that the Estimator is efficient}
+\paragraph{Showing $\hat{\tau}$ is unbiased}
+\begin{align}
+    E_\tau\left[\frac{1}{n}\sum_{i=1}^nx_i\right]&=\frac{1}{n}\sum_{i=1}^n E\left[x_i\right]
+    \\&=\frac{1}{n}\sum_{i=1}^n\tau
+    \\&=\tau
+\end{align}
+\paragraph{Showing $\hat{\tau}$ is efficient}
+Calculate the Fisher Information
+\begin{align}
+    I_\tau &= E\left[-\pdv[2]{\ln g\left(x_1,\dots,x_2\vert \tau\right)}{\tau}\right]
+    \\&=E\left[-\sum_{i=1}^n \frac{1}{\tau^2}-\frac{2}{\tau^3}x_i\right]
+    \\&=-\sum_{i=1}^n \frac{1}{\tau^2}-\frac{2}{\tau^3}E\left[x_i\right]
+    \\&=-\sum_{i=1}^n \frac{1}{\tau^2}-\frac{2}{\tau^2}
+    \\&=\sum_{i=1}^n \frac{1}{\tau^2}
+    \\&=\frac{n}{\tau^2}
+\end{align}
+\paragraph{Comparing with estimator variance}
+\begin{align}
+    V\left[\hat{\tau}\right] &= V\left[\frac{1}{n^2}\sum_{i=1}^n V\left[x_i\right]\right]
+    \\&=\frac{\tau^2}{n}
+\end{align}
+Conclusion, estimator is as efficient as it gets.
+\subsection{Laplace distribution}
+\subsubsection{Expectation Value and Variance}
+The Laplace distribution density is
+\begin{align}
+    f\left(x;m,s\right)=\frac{1}{2s}\exp\left[-\frac{\abs{x-m}}{s}\right]
+\end{align}
+\paragraph{Expectation Value}
+The expecation value of laplace distributed variable $X$ is
+\begin{align}
+    E\left[X\right]&=\int_{-\infty}^{\infty}\frac{x}{2s}\exp\left[-\frac{\abs*{x-m}}{s}\right]\;dx
+    \\&=\frac{1}{2s}\int_{-\infty}^\infty \left(u+m\right)\exp\left[-\frac{\abs{u}}{s}\right]\;du
+    \\&=\frac{1}{2s}\int_{-\infty}^\infty u\exp\left[-\frac{\abs{u}}{s}\right]\;du+m
+    \\&=m
+\end{align}
+\paragraph{Variance}
+\begin{align}
+    V\left[X\right]&=E\left[\left(X-m\right)^2\right]
+    \\&=\frac{1}{2s}\int_{-\infty}^{\infty}\left(x-m\right)^2\exp{-\frac{\abs{x-m}}{s}}\;dx
+    \\&=\frac{1}{2s}\int_{-\infty}^{\infty} u^2\exp{-\frac{\abs*{u}}{s}}\;du
+    \\&=\frac{1}{s}\int_0^\infty u^2\exp{-\frac{u}{s}}\;du
+    \\&=s^3\int_0^\infty v^2 e^{-v}\;dv
+    \\&=2s^3
+\end{align}
+\subsubsection{Estimators for $m$ and $s$}
+For a given sample the joint density is
+\begin{align}
+    g\left(x_1,\dots,x_n\vert s,m\right)=\prod_{i=1}^{n}\frac{1}{2s}e^{-\frac{\abs*{x_i-m}}{s}}
+\end{align}
+The log likelihood function is
+\begin{align}
+    \ln g &= \sum_{i=1}^n \ln\left(\frac{1}{2s}\exp{-\frac{\abs{x_i-m}}{s}}\right)
+    \\&=\sum_{i=1}^{n}\ln\left(\frac{1}{2s}\right)-\frac{\abs{x_i-m}}{s}
+    \\&=n\ln\left(\frac{1}{2s}\right)-\frac{1}{s}\sum_{i=1}^n\abs{x_i-m}
+\end{align}
+The maximum likelihood estimator for $m$ can now be found
+\begin{align}
+    \pdv{\ln g}{s}&=\pdv{s}\left[n\ln\left(\frac{1}{2s}\right)-\frac{1}{s}\sum_{i=1}^n\abs{x_i-m}\right]
+    \\&=-\frac{n}{s}+\frac{1}{s^2}\sum_{i=1}^n\abs{x_i-m}\overset{!}{=}0
+    \\\Rightarrow \hat{s}&=\frac{1}{n}\sum_{i=1}^n\abs{x_i-m}
+\end{align}
+The maximum likelihood estimator for $s$ can also be found
+\begin{align}
+    \pdv{\ln g}{m}&=\pdv{m}\left[n\ln\left(\frac{1}{2s}\right)-\frac{1}{s}\sum_{i=1}^n\abs{x_i-m}\right]
+    \\&=-\frac{1}{s}\sum_{i=1}^n\pdv{m}\abs{x_i-m}
+    \\&=-\frac{1}{s}\sum_{i=1}^n \text{sgn}\left(x-m\right)
+\end{align}
+\subsection{Survey}
+The multimodal distribution is defined as
+\begin{align}
+    f\left(n_A,n_B,n_C,n_D\vert p_A,p_B,p_C,p_D\right)=n!\prod_{i=A,B,C,D}\frac{1}{n_i!}p_i^{n_i}
+\end{align}
+with the log density
+\begin{align}
+    \ln f &= \ln\left(n!\prod_{i=A,B,C,D}\frac{1}{n_i!}p_{i}^{n_i}\right)
+    \\&=\ln\left(n!\right)+\sum_{i=A,B,C,D}\ln\left(\frac{1}{n_i!}\right)+\ln\left(p_i^{n_i}\right)
+    \\&=\ln\left(n!\right)+\sum_{i=A,B,C,D}\ln\left(\frac{1}{n_i!}\right)+n_i\ln\left(p_i\right)
+\end{align}
+Now the estimators for the voter shares can be found with
+\begin{align}
+    \pdv{\ln f}{p_i}&=\frac{n_i}{p_i}
+\end{align}
