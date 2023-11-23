@@ -1,0 +1,39 @@
+\section{Sheet}
+\subsection{Bernoulli}
+\subsubsection{Clopper and Pearson confidence interval}
+A Bernoulli experiment is repeated $n=200$ times with $k=121$ sucesses. Calculate the symmetric $95\%$ interval
+for the  parameter $p$.
+The Interval boundaries can be calculated with the inverse beta distribution.
+\begin{align}
+    G_1\left(k\right)&=\beta\left(\frac{\alpha}{2};k,n-k+1\right)=0.534
+    \\G_2\left(k\right)&=\beta\left(\frac{1-\alpha}{2};k+1,n-k\right)=0.673
+\end{align}
+\subsubsection{Approximation by normal distribution (bootstrap and robust)}
+Estimate $p$:
+\begin{equation}
+    \hat{p}=\frac{k}{n}=\frac{121}{200}
+\end{equation}
+With that estimate $\sigma$
+\begin{align}
+    \sigma\left[\hat{p}\right]&=\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}
+    \\&=\sqrt{\frac{9559}{8\cdot 10^6}}\approx 0.035
+\end{align}
+\begin{equation}
+    z_{1-\frac{\alpha}{2}}=f_{\text{norm}}\left(1-\frac{\alpha}{2}\right)=0.248
+\end{equation}
+Now the interval boundaries are for the bootstrap method:
+\begin{align}
+    G_1\left(k\right)&=\hat{p}-z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx 0.591
+    \\G_1\left(k\right)&=\hat{p}+z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx 0.619
+\end{align}
+and for the robust method
+\begin{align}
+    G_1\left(k\right)&=\hat{p}-z_{1-\frac{\alpha}{2}}\frac{1}{2\sqrt{n}}\approx 0.585
+    \\G_1\left(k\right)&=\hat{p}+z_{1-\frac{\alpha}{2}}\frac{1}{2\sqrt{n}}\approx 0.625
+\end{align}
+\subsubsection{Agresti-Coull}
+\begin{align}
+    G_1\left(k\right)\approx 0.585
+    G_2\left(k\right)\approx 0.624
+\end{align}
+\subsection{}
