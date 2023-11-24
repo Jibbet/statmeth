@@ -124,12 +124,31 @@ Together
 \paragraph{Conclusion} Both estimators are biased, but asymptotically unbiased. This makes intuitivly sense.
 We would like to correct the estimators $\hat{a}$ and $\hat{b}$.
 \begin{align}
-    \hat{a}_c &= \min_n\left\{X_n\right\}-\frac{b-a}{N+1}
-    \\\hat{b}_c &= \max_n\left\{X_n\right\}+\frac{b-a}{N+1}
+    \hat{a}_c &= \hat{a}-\frac{b-a}{N+1}
+    \\\hat{b}_c &= \hat{b}+\frac{b-a}{N+1}
 \end{align}
 but $a$ and $b$ are not a priori known.
-Note that
-\begin{equation}
-    \frac{E(\hat{a}+\hat{b})}{2}=\frac{E(\hat{a})+E(\hat{b})}{2}=\frac{a+b}{2}
-\end{equation}
-is an estimator for the mean and unbiased.
+Lets just guess an estimator.
+\begin{align}
+    E(\hat{b}-\hat{a})&=E(\hat{b})-E(\hat{a})
+    \\&=b-a-\frac{2\left(b-a\right)}{N+1}
+    \\&=\frac{\left(b-a\right)\left(N+1\right)}{N+1}-\frac{2\left(b-a\right)}{N+1}
+    \\&=\left(b-a\right)\frac{N-1}{N+1}
+    \\\Leftrightarrow E\left(\frac{N+1}{N-1}\left(\hat{b}-\hat{a}\right)\right)&=b-a
+\end{align}
+Not quite, but this means, that
+\begin{align}
+    \frac{N+1}{N-1}\left(\hat{b}-\hat{a}\right)
+\end{align}
+is unbiased estimator for $b-a$. Inserting the newly found estimator yields
+\begin{align}
+    \hat{a}_c &= \hat{a}-\frac{N+1}{N-1}\frac{\hat{b}-\hat{a}}{N+1}
+    \\&=\frac{\hat{a}\left(N-1\right)}{N-1}-\frac{\hat{b}-\hat{a}}{N-1}
+    \\&=\frac{\hat{a}N-\hat{b}}{N-1}
+\end{align}
+\begin{align}
+    \hat{b}_c&=\hat{b}+\frac{N+1}{N-1}\frac{\hat{b}-\hat{a}}{N+1}
+    \\&=\frac{\hat{b}\left(N-1\right)}{N-1}+\frac{\hat{b}-\hat{a}}{N-1}
+    \\&=\frac{\hat{b}N-\hat{a}}{N-1}
+\end{align}
+and we are done.
