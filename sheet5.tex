@@ -5,36 +5,25 @@ A Bernoulli experiment is repeated $n=200$ times with $k=121$ sucesses. Calculat
 for the  parameter $p$.
 The Interval boundaries can be calculated with the inverse beta distribution.
 \begin{align}
-    G_1\left(k\right)&=\beta\left(\frac{\alpha}{2};k,n-k+1\right)=0.534
-    \\G_2\left(k\right)&=\beta\left(\frac{1-\alpha}{2};k+1,n-k\right)=0.673
+    G_1\left(k\right)&=\beta\left(\frac{\alpha}{2};k,n-k+1\right)\approx0.534
+    \\G_2\left(k\right)&=\beta\left(\frac{1-\alpha}{2};k+1,n-k\right)\approx0.673
 \end{align}
-\subsubsection{Approximation by normal distribution (bootstrap and robust)}
-Estimate $p$:
-\begin{equation}
-    \hat{p}=\frac{k}{n}=\frac{121}{200}
-\end{equation}
-With that estimate $\sigma$
+\subsubsection{Approximation by normal distribution}
+\paragraph{bootstrap}
 \begin{align}
-    \sigma\left[\hat{p}\right]&=\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}
-    \\&=\sqrt{\frac{9559}{8\cdot 10^6}}\approx 0.035
+    G_1\left(k\right)&=\hat{p}-z_{1-\alpha/2}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx0.537
+    \\G_2\left(k\right)&=\hat{p}+z_{1-\alpha/2}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx0.673
 \end{align}
-\begin{equation}
-    z_{1-\frac{\alpha}{2}}=f_{\text{norm}}\left(1-\frac{\alpha}{2}\right)=0.248
-\end{equation}
-Now the interval boundaries are for the bootstrap method:
+\paragraph{robust}
 \begin{align}
-    G_1\left(k\right)&=\hat{p}-z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx 0.591
-    \\G_1\left(k\right)&=\hat{p}+z_{1-\frac{\alpha}{2}}\sqrt{\frac{\hat{p}\left(1-\hat{p}\right)}{n}}\approx 0.619
-\end{align}
-and for the robust method
-\begin{align}
-    G_1\left(k\right)&=\hat{p}-z_{1-\frac{\alpha}{2}}\frac{1}{2\sqrt{n}}\approx 0.585
-    \\G_1\left(k\right)&=\hat{p}+z_{1-\frac{\alpha}{2}}\frac{1}{2\sqrt{n}}\approx 0.625
+    G_1\left(k\right)&=\hat{p}-z_{1-\alpha/2}\frac{1}{2\sqrt{n}}\approx0.536
+    \\G_2\left(k\right)&=\hat{p}+z_{1-\alpha/2}\frac{1}{2\sqrt{n}}\approx0.674
 \end{align}
 \subsubsection{Agresti-Coull}
+Choose $k'=k+\left(z_{1-\alpha/2}\right)^2$, $n'=n+\left(z_{1-\alpha/2}\right)^2$ and $p'=k'/n'$.
 \begin{align}
-    G_1\left(k\right)\approx 0.585
-    \\G_2\left(k\right)\approx 0.624
+    G_1\left(k\right)&=p'-z_{1-\alpha/2}\sqrt{\frac{p'\left(1-p'\right)}{n}}\approx0.546
+    \\G_2\left(k\right)&=p'+z_{1-\alpha/2}\sqrt{\frac{p'\left(1-p'\right)}{n}}\approx0.679
 \end{align}
 \subsection{Biased and unbiased Estimators for uniform distribution interval borders}
 The joint probability of the sample ist
