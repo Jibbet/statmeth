@@ -34,6 +34,102 @@ and for the robust method
 \subsubsection{Agresti-Coull}
 \begin{align}
     G_1\left(k\right)\approx 0.585
-    G_2\left(k\right)\approx 0.624
+    \\G_2\left(k\right)\approx 0.624
 \end{align}
-\subsection{}
+\subsection{Biased and unbiased Estimators for uniform distribution interval borders}
+The joint probability of the sample ist
+\begin{equation}
+    g\left(X_1,\dots,X_N\vert a,b\right)=\prod_n^N \frac{1}{b-a}\cdot I_{\left[a,b\right]}\left(X_n\right)
+\end{equation}
+The ML estimator is
+\begin{equation}
+    \hat{a}=\text{arg max}_a\prod_{n}^{N}\frac{1}{b-a}\cdot I_{\left[a,b\right]}\left(X_n\right)
+\end{equation}
+This would not take a minimum if not for the constraint
+\begin{equation}
+    \hat{a}\leq\min_n\left\{X_n\right\}
+\end{equation}
+Therefore
+\begin{equation}
+    \hat{a}=\min_n\left\{X_n\right\}
+\end{equation}
+Similarly
+\begin{equation}
+    \hat{b}\geq\max_n\left\{X_n\right\}
+\end{equation}
+and
+\begin{equation}
+    \hat{b}=\max_n\left\{X_n\right\}
+\end{equation}
+\paragraph{Showing the estimators are biased}
+To show the estimators are biased, calculate their distribution functions:
+\begin{align}
+    F_{\hat{a}}\left(x\right)=P\left(\hat{a}\leq x\right)&=1-\prod_n P\left(X_n>x\right)
+    \\&=1-P^N\left(X>x\right)
+    \\&=1-\left(\frac{b-x}{b-a}\right)^N
+\end{align}
+The density is
+\begin{align}
+    \pdv{F_{\hat{a}}}{x}&=\frac{N}{b-a}\left(\frac{b-x}{b-a}\right)^{N-1}
+\end{align}
+Now the expectation value is
+\begin{align}
+    E\left(\hat{a}\right)&=\int_a^b x \frac{n}{b-a}\left(\frac{b-x}{b-a}\right)^{N-1}\;dx
+    \\&=\left[-\left(\frac{b-x}{b-a}\right)^N x\right]_a^b+\int_a^b\left(\frac{b-x}{b-a}\right)^N\;dx
+\end{align}
+Here is
+\begin{align}
+    \left[-\left(\frac{b-x}{b-a}\right)^N x\right]_a^b=\left[-\underbrace{\left(\frac{b-b}{b-a}\right)^N}_{=0}b + \underbrace{\left(\frac{b-a}{b-a}\right)^N}_{=1}a\right]=a
+\end{align}
+and
+\begin{align}
+    \int_a^b\left(\frac{b-x}{b-a}\right)^N\;dx&=\left[-\frac{b-a}{N+1}\left(\frac{b-x}{b-a}\right)^{N+1}\right]_a^b
+    \\&=-\frac{b-a}{N+1}\left[\underbrace{\left(\frac{b-b}{b-a}\right)^{N+1}}_{=0}-\underbrace{\left(\frac{b-a}{b-a}\right)^{N+1}}_{=1}\right]
+    \\&=\frac{b-a}{N+1}
+\end{align}
+Together
+\begin{align}
+    E\left(\hat{a}\right)=a+\frac{b-a}{N+1}
+\end{align}
+Similarly for $\hat{b}$:
+\begin{align}
+    F_{\hat{b}}\left(x\right)&=P\left(\hat{b}\leq x\right)
+    \\&=\prod_n P\left(X_n\leq x\right)
+    \\&=P^N\left(X\leq x\right)
+    \\&=\left(\frac{x-a}{b-a}\right)^N
+\end{align}
+The density is
+\begin{equation}
+    \pdv{F_{\hat{b}}}{x}=\frac{N}{b-a}\left(\frac{x-a}{b-a}\right)^{N-1}
+\end{equation}
+The expectation value of $\hat{b}$ is
+\begin{align}
+    E(\hat{b})&=\int_{a}^{b}x\frac{N}{b-a}\left(\frac{x-a}{b-a}\right)^{N-1}\;dx
+    \\&=\left[\left(\frac{x-a}{b-a}\right)^N x\right]_a^b-\int_{a}^{b}\left(\frac{x-a}{b-a}\right)^N\;dx
+\end{align}
+where
+\begin{align}
+    \left[\left(\frac{x-a}{b-a}\right)^N x\right]_a^b&=\left[\underbrace{\left(\frac{b-a}{b-a}\right)^N}_{=1}b-\underbrace{\left(\frac{a-a}{b-a}\right)^N}_{=0}a\right]=b
+\end{align}
+and
+\begin{align}
+    \int_{a}^{b}\left(\frac{x-a}{b-a}\right)^N\;dx&=\left[\frac{b-a}{N+1}\left(\frac{x-a}{b-a}\right)^{N+1}\right]_a^b
+    \\&=\frac{b-a}{N+1}\left[\underbrace{\left(\frac{b-a}{b-a}\right)^{N+1}}_{=1}-\underbrace{\left(\frac{a-a}{b-a}\right)^{N+1}}_{=0}\right]
+    \\&=\frac{b-a}{N+1}
+\end{align}
+Together
+\begin{align}
+    E(\hat{b})=b-\frac{b-a}{N+1}
+\end{align}
+\paragraph{Conclusion} Both estimators are biased, but asymptotically unbiased. This makes intuitivly sense.
+We would like to correct the estimators $\hat{a}$ and $\hat{b}$.
+\begin{align}
+    \hat{a}_c &= \min_n\left\{X_n\right\}-\frac{b-a}{N+1}
+    \\\hat{b}_c &= \max_n\left\{X_n\right\}+\frac{b-a}{N+1}
+\end{align}
+but $a$ and $b$ are not a priori known.
+Note that
+\begin{equation}
+    \frac{E(\hat{a}+\hat{b})}{2}=\frac{E(\hat{a})+E(\hat{b})}{2}=\frac{a+b}{2}
+\end{equation}
+is an estimator for the mean and unbiased.
