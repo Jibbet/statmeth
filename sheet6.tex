@@ -1,0 +1,91 @@
+\section{Sheet}
+\subsection{Maximum likelihood Estimators for the multivariate Normal distribution}
+The density of the multivariate normal distribution is
+\begin{equation}
+    f=\frac{1}{(2\pi)^{\frac{d}{2}}\sqrt{\abs{V}}}
+    \exp\left(-\frac{1}{2}\left(x-\mu\right)^TV^{-1}\left(x-\mu\right)\right)
+\end{equation}
+The likelihood function is
+\begin{align}
+    g\left(\mu, V\vert x_1,\dots,x_n\right)
+    &=\prod_{i=1}^{n}\frac{1}{(2\pi)^{\frac{d}{2}}\sqrt{\abs*{V}}}
+    \exp\left(-\frac{1}{2}\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right)
+    \\&=(2\pi)^{-\frac{nd}{2}}\abs*{V}^{-\frac{n}{2}}
+    \prod_{i=1}^{n}\exp\left(-\frac{1}{2}\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right)
+\end{align}
+Calculating the log likelihood:
+\begin{align}
+    l = \ln g\left(\mu, V\vert x_1,\dots,x_n\right)
+    &=-\frac{nd}{2}\ln\left(2\pi\right)-\frac{n}{2}\ln\left(\abs{V}\right)
+    -\frac{1}{2}\sum_{i=1}^{n}\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)
+\end{align}
+\subsubsection{Calculating $\hat{\mu}$}
+\begin{align}
+    \nabla_\mu \ln g &= -\frac{1}{2}\sum_{i=1}^{n}\nabla_\mu\left[\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right]
+    \\&=-\frac{1}{2}\sum_{i=1}^{n}\nabla_\mu\left[x_i^TV^{-1}x_i-x_i^TV^{-1}\mu-\mu^TV^{-1}x_i+\mu^TV^{-1}\mu\right]
+    \\&=-\frac{1}{2}\sum_{i=1}^{n}\nabla_\mu\left[-x_i^TV^{-1}\mu-\mu^TV^{-1}x_i+\mu^TV^{-1}\mu\right]
+    \\&=-\frac{1}{2}\sum_{i=1}^{n}\left[-x_i^TV^{-1}-v^{-1}x_i+2V^{-1}\mu\right]
+    \\&=-\frac{1}{2}\sum_{i=1}^{n}2V^{-1}\left(\mu-x_i\right)
+    \\&=V^{-1}\sum_{i=1}^{n}\left(x_i-\mu\right)
+\end{align}
+Setting this to zero yields
+\begin{align}
+    &\sum_{i=1}^{n}\left(x_i-\mu\right)\overset{!}{=}0
+    \\\Leftrightarrow&\hat{\mu}=\frac{1}{n}\sum_{i=1}^{n}x_i
+\end{align}
+since $V$ is invertible.
+\subsubsection{Calculating $\hat{V}$}
+Use
+\begin{equation}
+    \abs*{V^{-1}}=\frac{1}{\abs{V}}\Rightarrow -\ln\abs{V}=\ln\abs{V^{-1}}
+\end{equation}
+\begin{align}
+    \nabla_{V^{-1}} \ln g = \frac{n}{2}\nabla_{V^{-1}}\left[\ln\abs{V}\right]
+    -\frac{1}{2}\sum_{i=1}^{n}\nabla_{V^{-1}}\left[\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right]
+\end{align}
+Now we have the terms
+\begin{align}
+    \frac{n}{2}\nabla_{V^{-1}}\left[\ln\abs{V}\right]&=\frac{n}{2}V
+\end{align}
+and
+\begin{align}
+    \nabla_{V^{-1}}\left[\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right]&=\nabla_{V^{-1}}\left[\trace\left(\left(x_i-\mu\right)^TV^{-1}\left(x_i-\mu\right)\right)\right]
+    \\&=\nabla_{V^{-1}}\left[\trace\left(\left(x_i-\mu\right)^T\left(x_i-\mu\right)V^{-1}\right)\right]
+    \\&=\left(\left(x_i-\mu\right)^T\left(x_i-\mu\right)\right)^T
+    \\&=\left(x_i-\mu\right)\left(x_i-\mu\right)^T
+\end{align}
+The trace can be added, because the term is a scalar.
+Also we used
+\begin{align}
+    \nabla_{B}\tr{AB}=A^T
+\end{align}
+Together
+\begin{align}
+    \nabla_{V^-1}\ln g = \frac{n}{2}V-\frac{1}{2}\sum_{i=1}^{n}\left(x_i-\mu\right)\left(x_i-\mu\right)^T\overset{!}{=}0
+\end{align}
+which means
+\begin{equation}
+    \hat{V}=\frac{1}{n}\sum_{i=1}^{n}\left(x_i-\mu\right)\left(x_i-\mu\right)^T
+\end{equation}
+\subsection{Radioactive source}
+We are testing $H_0:\lambda\geq\frac{5}{s}$. Our sample size is $n=240$. The test statistik is $T=1182$.
+\begin{align}
+    P\left(T\right)&=\sum_{k=0}^T\frac{(n\lambda_0)^ke^{-n\lambda_0}}{k!}
+    \\&=\sum_{k=0}^{T}\frac{1200^ke^{-1200}}{k!}\approx 0.308 \overset{!}{<}\alpha=0.05
+\end{align}
+This can also be thought of as chopping the 240s into 1s bits and summing to get the test statistik.
+\begin{align}
+    Z&=\frac{T-n\lambda_0}{\sqrt{n\lambda_0}}
+    \\&=\frac{1182-1200}{\sqrt{1200}}
+    \\&\approx -0.52
+    \\&\approx z_{.30}
+\end{align}
+\subsection{Drunk intervention}
+Use the t-Test for paired samples. $W_i = Y_i-X_i$. Assume $W_i$ are normally distributed.
+We assume Alcohol may only increase reaction times and use a one sided t-Test.
+\par$H_0:\mu_w=\mu_{w0}$
+\\The test Statistic is
+\begin{align}
+    T &= \frac{\sqrt{n}\left(\overline{W}-\mu_{w0}\right)}{S}\approx 3.397\overset{!}{>}t_{1-\alpha;n-1}\approx 1.9
+\end{align}
+$H_0$ is rejected. Alcohol has an influence on reaction times.
